@@ -1,4 +1,5 @@
 # ESP8266 RGB-Strip controller
+RGB-Strip controller based on ESP8266 that can recieve color data over a WiFi network 
 
 ## Configuring
 
