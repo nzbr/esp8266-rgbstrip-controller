@@ -1,0 +1,36 @@
+### Additional Ignores ###
+
+.idea/
+src/config.h
+cmake-build-debug/
+CMakeLists.txt
+CMakeListsPrivate.txt
+
+# Created by https://www.gitignore.io/api/platformio,cmake
+# Edit at https://www.gitignore.io/?templates=platformio,cmake
+
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
+### PlatformIO ###
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+.pio
+
+# End of https://www.gitignore.io/api/platformio,cmake
