@@ -22,15 +22,18 @@ bool connected = false;
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
-
+#ifndef DRV_NEOPIXELBUS
     Serial.begin(BAUDRATE);
+#endif
     drvInit(LED_COUNT, DEVICE_PIN);
     bootAnimation();
 
     #ifdef WIFIENABLE
         WiFi.mode(WIFI_STA); //Disable AccessPoint
         WiFi.begin(WIFISSID, WIFIPASS);
+#ifndef DRV_NEOPIXELBUS
         Serial.println("\nConnecting");
+#endif
         TCP = new WiFiServer(TCPPORT);
         TCP->begin();
 
@@ -44,14 +47,18 @@ void setup() {
 void loop(){
     timestamp++;
     #ifdef DEBUG
+#ifndef DRV_NEOPIXELBUS
         if (timestamp % 256 == 0) Serial.println(timestamp);
+#endif
     #endif
 
     #ifdef WIFIENABLE
         //TODO: Add configurable timeout
         if (WiFi.status() != WL_CONNECTED) {
             if (connected) {
+#ifndef DRV_NEOPIXELBUS
                 Serial.println("\nReconnecting");
+#endif
                 connected = false;
             }
             connectingStep();
@@ -59,10 +66,12 @@ void loop(){
         }
         if (!connected) {
             connectingFree();
+#ifndef DRV_NEOPIXELBUS
             Serial.println("Connected!");
             Serial.print("IP: ");
             Serial.println(WiFi.localIP());
             Serial.println();
+#endif
             connected = true;
         }
     #endif
@@ -73,6 +82,7 @@ void loop(){
 }
 
 void receivePackets() {
+#ifndef DRV_NEOPIXELBUS
     if (Serial.available()) {
         uint8_t len = Serial.read();
         if (Serial.available() < len) {
@@ -90,6 +100,7 @@ void receivePackets() {
         free(buffer);
     }
     skipSerial:
+#endif
 
     #ifdef WIFIENABLE
         //TCP => Serial without length bit
