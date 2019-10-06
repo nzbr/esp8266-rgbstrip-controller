@@ -18,6 +18,7 @@ String processPacket(int len, const uint8_t* data);
 WiFiUDP *UDP;
 WiFiServer *TCP;
 bool connected = false;
+uint8_t reply[2] = { 'O','K' };
 
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
@@ -133,6 +134,9 @@ void receivePackets() {
                 }
                 UDP->read(colorBuffer, colorBufferLength);
             }
+          UDP->beginPacket(UDP->remoteIP(), UDP->remotePort());                // send a reply
+          UDP->write(*reply);        // https://www.esp8266.com/viewtopic.php?p=57089#p57067
+          UDP->endPacket();          // stablized by the inclusion of the send
         }
         #ifdef DEBUG
             if (missed > 0) Serial.printf("[%5d] Missed %d UDP packets\n", timestamp, missed);
