@@ -22,7 +22,6 @@ bool connected = false;
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
-
     Serial.begin(BAUDRATE);
     drvInit(LED_COUNT, DEVICE_PIN);
     bootAnimation();
@@ -30,7 +29,9 @@ void setup() {
     #ifdef WIFIENABLE
         WiFi.mode(WIFI_STA); //Disable AccessPoint
         WiFi.begin(WIFISSID, WIFIPASS);
+#ifndef DRV_NEOPIXELBUS
         Serial.println("\nConnecting");
+#endif
         TCP = new WiFiServer(TCPPORT);
         TCP->begin();
 
@@ -73,6 +74,7 @@ void loop(){
 }
 
 void receivePackets() {
+#ifndef DRV_NEOPIXELBUS
     if (Serial.available()) {
         uint8_t len = Serial.read();
         if (Serial.available() < len) {
@@ -90,6 +92,7 @@ void receivePackets() {
         free(buffer);
     }
     skipSerial:
+#endif
 
     #ifdef WIFIENABLE
         //TCP => Serial without length bit

@@ -11,6 +11,8 @@
 //Choose a device driver
 //#define DRV_NEOPIXEL
 //#define DRV_TM1829
+//#define DRV_NEOPIXELBUS // to use neopixelbus you need to uncomment the right Feature for your leds https://github.com/Makuna/NeoPixelBus/wiki/NeoPixelBus-object#neo-features
+//#define NEOPIXELBUS_FEATURE NeoGrbwFeature //for sk6812rgbw
 
 //Device properties
 #define DEVICE_PIN D6
