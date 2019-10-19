@@ -11,7 +11,7 @@ Adafruit_NeoPixel* neoPixel;
 int ledcount;
 
 void drvInit(int leds, int pin) {
-    neoPixel = new Adafruit_NeoPixel(leds, pin, NEO_BRG + NEO_KHZ800);
+    neoPixel = new Adafruit_NeoPixel(leds, pin, NEOPIXEL_MODE);
     /*
      * Ein Mahnmal damit das NIE WIEDER passiert
      *

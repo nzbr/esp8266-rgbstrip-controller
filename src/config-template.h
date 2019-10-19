@@ -13,7 +13,15 @@
 //#define DRV_TM1829
 //#define DRV_PWM
 //#define DRV_NEOPIXELBUS // to use neopixelbus you need to uncomment the right Feature for your leds https://github.com/Makuna/NeoPixelBus/wiki/NeoPixelBus-object#neo-features
-//#define NEOPIXELBUS_FEATURE NeoGrbwFeature //for sk6812rgbw
+
+#ifdef DRV_NEOPIXEL
+	#include <Adafruit_NeoPixel.h>
+	const int NEOPIXEL_MODE = NEO_BRG + NEO_KHZ800;
+#endif
+
+#ifdef DRV_NEOPIXELBUS
+	#define NEOPIXELBUS_FEATURE NeoGrbwFeature //for sk6812rgbw
+#endif
 
 //Device properties
 #define DEVICE_PIN D6 // ignored on PWM
