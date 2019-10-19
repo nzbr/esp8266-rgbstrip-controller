@@ -11,11 +11,15 @@
 //Choose a device driver
 //#define DRV_NEOPIXEL
 //#define DRV_TM1829
+//#define DRV_PWM
 //#define DRV_NEOPIXELBUS // to use neopixelbus you need to uncomment the right Feature for your leds https://github.com/Makuna/NeoPixelBus/wiki/NeoPixelBus-object#neo-features
 //#define NEOPIXELBUS_FEATURE NeoGrbwFeature //for sk6812rgbw
 
 //Device properties
-#define DEVICE_PIN D6
+#define DEVICE_PIN D6 // ignored on PWM
+//#define R_PIN D6 // needed just for PWM
+//#define G_PIN D7 // needed just for PWM
+//#define B_PIN D8 // needed just for PWM
 #define LED_COUNT 50
 
 //Connect to WiFi and open UDP Port
