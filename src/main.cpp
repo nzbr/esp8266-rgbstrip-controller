@@ -8,7 +8,6 @@
 
 #include "include.h"
 
-#include "animations/bootanimation.h"
 #include "animations/connecting.h"
 #include "modes/mode.h"
 
@@ -25,7 +24,6 @@ void setup() {
     digitalWrite(LED_BUILTIN, LOW);
     Serial.begin(BAUDRATE);
     drvInit(LED_COUNT, DEVICE_PIN);
-    bootAnimation();
 
     #ifdef WIFIENABLE
         WiFi.mode(WIFI_STA); //Disable AccessPoint
