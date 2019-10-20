@@ -8,32 +8,33 @@
 bool initialized = false;
 unsigned int pos = 0;
 int step = 1;
-#define IND_LEN 5
+
+#define STEP 3
 
 
 void connectingStep() {
-    if (!initialized) drvSetStrip(C_BLACK);
-    for (unsigned int p = pos; p < pos+IND_LEN; p++) {
-        drvSetPixel(p, C_BLUE);
-    }
-    if (step == 1) {
-        if (pos != 0) {
-            drvSetPixel(pos - 1, C_BLACK);
-        }
-    } else {
-        if (pos + IND_LEN != LED_COUNT) {
-            drvSetPixel(pos + IND_LEN + 1, C_BLACK);
-        }
+    if (!initialized) {
+        drvSetStrip(C_BLACK);
+        initialized = true;
+        pos = 0;
+    };
+    
+    if (pos >= 255) {
+        step = -STEP;
+    } else if (pos <= 0) {
+        step = STEP;
     }
     pos += step;
-    if (pos == 0 || pos + IND_LEN == LED_COUNT) {
-        step *= -1;
-    }
+
+    drvSetStrip(0, pos, pos);
     drvShow();
-    delay(25);
+    #ifdef DRV_TM1829
+        delay(1);
+    #endif
 }
 
 void connectingFree() {
+    initialized = false;
     drvSetStrip(C_BLACK);
     drvShow();
 }
