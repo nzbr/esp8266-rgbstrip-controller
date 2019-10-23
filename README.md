@@ -19,3 +19,8 @@ The following settings **must** be changed:
 		- You can safely close the serial terminal by pressing CTRL+C
 	- If the flash falis on Linux you may want to use `sh linuxrun.sh` instead
 		- This assumes that the serial connection registers as `/dev/ttyUSB0`
+
+## Protocol Documentation
+
+- [UDP Protocol](https://github.com/nzbr/esp8266-rgbstrip-controller/blob/master/doc/udp.md)
+- [TCP Protocol]() TODO
