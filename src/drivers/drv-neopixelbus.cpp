@@ -25,7 +25,7 @@ void drvSetPixel(unsigned int led, uint8_t r, uint8_t g, uint8_t b){
     /*if (r == 255) r--; //TODO: Only helped partially
     if (g == 255) g--;
     if (b == 255) b--;*/
-    npb.SetPixelColor(led, RgbwColor(r,g,b));
+    npb.SetPixelColor(led, RgbColor(r,g,b));
 }
 
 void drvShow(){
