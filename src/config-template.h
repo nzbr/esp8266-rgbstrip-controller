@@ -39,6 +39,8 @@
 
 //Reboot on UDP disconnect instead of switching to colorflow mode
 #define UDP_REBOOT
+//Reboot on long WiFi disconnect (10000 cycles/double of UDP timeout)
+#define WIFI_REBOOT
 
 //Read data from serial port (Baud is needed for output anyway!)
 #define BAUDRATE 74880

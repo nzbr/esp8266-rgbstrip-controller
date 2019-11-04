@@ -9,6 +9,7 @@ bool initialized = false;
 unsigned int pos = 0;
 int absstep = 0;
 int step = 1;
+int cycle = 0;
 
 #define MAXPOS 128
 
@@ -22,7 +23,18 @@ void connectingStep() {
         drvSetStrip(C_BLACK);
         initialized = true;
         pos = 0;
+
+        #ifdef WIFI_REBOOT
+        cycle = 0;
+        #endif
     };
+
+    #ifdef WIFI_REBOOT
+    cycle++;
+    if (cycle == 10000) {
+        ESP.reset();
+    }
+    #endif
     
     if (pos >= MAXPOS) {
         step = -absstep;
