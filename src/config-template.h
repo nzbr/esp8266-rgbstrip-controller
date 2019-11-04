@@ -39,7 +39,8 @@
 
 //Reboot on UDP disconnect instead of switching to colorflow mode
 #define UDP_REBOOT
-//Reboot on long WiFi disconnect (10000 cycles/double of UDP timeout)
+#define UDP_TIMEOUT 5000
+//Reboot on long WiFi disconnect
 #define WIFI_REBOOT
 #define WIFI_TIMEOUT 10000
 

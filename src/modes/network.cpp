@@ -7,7 +7,7 @@
 
 void networkStep() {
     //Automatically switch mode to default on idle
-    if (timestamp == (uint16_t)(lastUdpSignal+5000)) {
+    if (timestamp == (uint16_t)(lastUdpSignal+UDP_TIMEOUT)) {
         #ifdef UDP_REBOOT
             ESP.reset();
         #else
