@@ -31,7 +31,7 @@ void connectingStep() {
 
     #ifdef WIFI_REBOOT
     cycle++;
-    if (cycle == 10000) {
+    if (cycle == WIFI_TIMEOUT) {
         ESP.reset();
     }
     #endif

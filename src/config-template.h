@@ -41,6 +41,7 @@
 #define UDP_REBOOT
 //Reboot on long WiFi disconnect (10000 cycles/double of UDP timeout)
 #define WIFI_REBOOT
+#define WIFI_TIMEOUT 10000
 
 //Read data from serial port (Baud is needed for output anyway!)
 #define BAUDRATE 74880
