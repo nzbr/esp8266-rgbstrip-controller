@@ -7,22 +7,27 @@
 
 bool initialized = false;
 unsigned int pos = 0;
+int absstep = 0;
 int step = 1;
 
-#define STEP 3
+#define MAXPOS 128
 
 
 void connectingStep() {
     if (!initialized) {
+        if (absstep == 0) {
+            absstep = max((int)round(LED_COUNT / 100), 1);
+            Serial.println(absstep);
+        }
         drvSetStrip(C_BLACK);
         initialized = true;
         pos = 0;
     };
     
-    if (pos >= 255) {
-        step = -STEP;
+    if (pos >= MAXPOS) {
+        step = -absstep;
     } else if (pos <= 0) {
-        step = STEP;
+        step = absstep;
     }
     pos += step;
 
