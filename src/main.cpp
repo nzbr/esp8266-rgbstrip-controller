@@ -112,7 +112,7 @@ void receivePackets() {
             client.stop();
         }
 
-        //UDP => Raw color data for aurora mode, no response
+        //UDP => Raw color data for network mode, no response
         //Skip to last packet
         #ifdef DEBUG
             int missed = -1;
@@ -126,7 +126,7 @@ void receivePackets() {
                 missed++;
             #endif
             len = UDP->available();
-            if (currentMode != m_aurora) setMode(m_aurora); //Auto-Switch to aurora mode
+            if (currentMode != m_network) setMode(m_network); //Auto-Switch to network mode
             if (len % 3 == 0){
                 if (colorBufferLength != len) {
                     colorBufferLength = len;

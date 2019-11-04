@@ -7,7 +7,7 @@
 
 #include "colorflow.h"
 #include "singlecolor.h"
-#include "aurora.h"
+#include "network.h"
 
 void setToDefaultMode();
 
@@ -39,9 +39,9 @@ void setMode(uint8_t mode){
             stepFunction = &colorFlowStep;
             freeFunction = &colorFlowFree;
             break;
-        case m_aurora:
-            stepFunction = &auroraStep;
-            freeFunction = &auroraFree;
+        case m_network:
+            stepFunction = &networkStep;
+            freeFunction = &networkFree;
             break;
         case m_default:
         default:

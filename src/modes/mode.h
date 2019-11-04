@@ -7,7 +7,7 @@
 
 #define m_solidColor 0
 #define m_colorFlow 1
-#define m_aurora 2
+#define m_network 2
 #define m_default 0xFF
 
 void modeStep();
