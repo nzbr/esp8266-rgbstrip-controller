@@ -37,6 +37,9 @@
 #define TCPPORT 1337
 #define UDPPORT 1337
 
+//Reboot on UDP disconnect insted of switching to colorflow mode
+#define UDP_REBOOT
+
 //Read data from serial port (Baud is needed for output anyway!)
 #define BAUDRATE 74880
 

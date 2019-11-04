@@ -7,7 +7,13 @@
 
 void networkStep() {
     //Automatically switch mode to default on idle
-    if (timestamp == (uint16_t)(lastUdpSignal+5000)) setMode(m_default);
+    if (timestamp == (uint16_t)(lastUdpSignal+5000)) {
+        #ifdef UDP_REBOOT
+            ESP.reset();
+        #else
+            setMode(m_default);
+        #endif
+    }
 
     if (colorBuffer == nullptr) {
         colorBufferLength = 3;
